@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '2.0.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.+'
 }
 
 group = 'org.example'
@@ -21,9 +21,9 @@ dependencies {
 //    implementation 'io.realm:realm-android-library:10.13.0'
 }
 
-test {
-    useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(11)
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }

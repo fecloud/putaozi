@@ -44,17 +44,48 @@ val resources = arrayListOf(
     Content("8c79106f-5bba-424c-963d-a1ae91e1ab6f", "Goodbye Song", 106, 1),
     Content("0b3a9d22-f938-40a6-b06a-5eaa7f63cda5", "Jonny Bear “This is Me!”", 107, 1),
 
+    Content("49e8adc4-47dc-4de3-9122-f11e15ae1763", "Early in the Morning", 47, 2),
+    Content("80232af2-f6de-4ce9-90e3-5e7d5b91d43e", "Flashcard Friends Part 1", 48, 2),
+    Content("e9eb4529-6bfe-4274-9a96-9d1d070d0e32", "Just Wiggle!", 49, 2),
+    Content("175bd643-3751-4cb3-baff-ffbc66c6bd36", "Two Little Eyes", 50, 2),
+    Content("8b61b131-bf47-4e68-b20b-7216c2ab77d9", "Ten Things", 51, 2),
+    Content("60a08dab-06e0-4538-a346-0b542158ff09", "Phonics Funtime L&G", 52, 2),
+    Content("50f66ea9-0868-4f14-ae6d-0824fe35678e", "Umbrella", 53, 2),
+    Content("0ce36f78-ba8f-4843-a608-853f581d4695", "Lineman L", 54, 2),
+    Content("2cea4f1c-dd0d-451b-b459-53b6d1e3b521", "Stand Up and Look Around", 55, 2),
+    Content("ea28e3b2-3e77-4eb6-b68b-9592cab877cf", "Blue", 56, 2),
+    Content("59c30990-795a-47a6-8344-afb3834e440a", "Lineman G", 57, 2),
+    Content("94ab5d93-50ba-47f4-993e-ea7c8792c715", "Hold Hands with a Friend", 58, 2),
+    Content("44c97efc-6f8e-4201-86a2-24be82b78668", "Flashcard Friends Part 2", 59, 2),
+    Content("f4cb7643-28b4-4308-8437-f901dfa8c5d0", "Nice Things to Say", 60, 2),
+    Content("280e3de4-58f9-49b9-80c4-4849e3e6b069", "Kenny Kangaroo", 61, 2),
+    Content("d2aaf711-377e-4717-8658-c0e2e761142c", "My Hands", 62, 2),
+    Content("ba1b269c-510a-428e-9ea4-c4e042032fce", "All These Things", 63, 2),
+    Content("563866ab-d393-425a-b392-6ad7648081bb", "Boy", 64, 2),
+    Content("fc42e6cc-5458-4d0d-b84a-88fb561a33db", "Two", 65, 2),
+    Content("17a4bf25-f7eb-441b-8ec6-a478af0dfc69", "Phonics Funtime U", 66, 2),
+    Content("796a3248-6cae-49de-9d41-f3c415d3e9e5", "What Can You Do", 67, 2),
+    Content("ff4066af-c78a-40d1-a22d-a468d8f0db5f", "Lineman U", 68, 2),
+    Content("798dca2a-8845-4d3d-93f6-bc05b62c6cde", "Point and Pat", 69, 2),
+    Content("6e5487bf-d635-4158-a561-9c22d3569c08", "Too Big, Too Small", 70, 2),
+    Content("799aa5ff-f7fc-4605-8d25-8fc5f95f89b5", "Head, Shoulders, Knees and Toes", 71, 2),
+    Content("5f05a1c6-ab5e-4fab-918e-6f2d9d2466c6", "Girl", 72, 2),
+    Content("8eb16a5e-02ef-4205-88d2-f26f81894a0c", "Phonics Funtime B", 73, 2),
+    Content("0f7e57c3-313a-40de-be18-ee1e96cc9bee", "Lineman B", 74, 2),
+    Content("b52f0438-868b-4aa1-9781-6149d0cffe7f", "Mother Who Lives in a Boot", 75, 2),
+    Content("9cecc9f1-4a41-40eb-8a93-e8a795f4475e", "Jonny Bear Goes to the Zoo", 76, 2),
+    Content("ca0b63f3-b28a-47d9-a294-9959da15e8e4", "Flashcard Friends Part 3", 77, 2),
 
     )
 
 fun getMedia(base: String, item: Content): String {
-    return File(base + "/.contents/" + item.id).listFiles().filter {
+    return File(base + "${File.separator}.contents${File.separator}" + item.id).listFiles().filter {
         it.name.endsWith("mp3") || it.name.endsWith("mp4")
     }.first().absolutePath
 }
 
 fun buildTarget(base: String, item: Content, type: String): String {
-    return base + "/Unit${item.unit}/${item.sequence}-${item.name}$type"
+    return base + "${File.separator}Unit${item.unit}${File.separator}${item.sequence}-${item.name}$type"
 }
 
 fun copyFile(sourceFilePath: String, destinationFilePath: String) {
@@ -92,8 +123,8 @@ fun copyFile(sourceFilePath: String, destinationFilePath: String) {
 
 fun main() {
 
-    val baseDir = "/Users/anker/Downloads/files"
-    val targetDir = "/Users/anker/Downloads/putaozi"
+    val baseDir = "f:\\files"
+    val targetDir = "d:\\putaozi"
 
     resources.forEach {
         val sourceFile = getMedia(baseDir, it)
