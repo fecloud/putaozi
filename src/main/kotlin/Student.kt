@@ -98,7 +98,7 @@ val resources = arrayListOf(
     Content("514856ff-a166-4fdc-875a-2f7e99a4fe96", "Lineman X", 78, 3),
     Content("9df74db1-e4fd-4436-a76e-03981c46b0ea", "Three", 79, 3),
     Content("65680a71-af4e-4d52-af9d-7347695e099c", "Give it to a Friend!", 80, 3),
-    Content("5894d813-3950-4344-8518-9f9011f9828e", "Yes? No?", 81, 3),
+    Content("5894d813-3950-4344-8518-9f9011f9828e", "Yes No", 81, 3),
     Content("130c8489-1840-4897-bddf-9f11cec74efd", "Flashcard Friends 3", 82, 3),
     Content("4e12fa80-51d7-4fb1-80ca-6e354808ff7e", "Our Day at School", 83, 3),
     Content("7ffad446-6b58-4662-9139-1473fdca6421", "Jonny Bear Helps His Mother", 84, 3),
@@ -126,6 +126,10 @@ fun copyFile(sourceFilePath: String, destinationFilePath: String) {
         }
 
         val destinationFile = File(destinationFilePath)
+
+        if (destinationFile.exists() && sourceFile.length() == destinationFile.length()){
+            return
+        }
         val destinationDirectory = destinationFile.parentFile
         if (!destinationDirectory.exists()) {
             if (!destinationDirectory.mkdirs()) {
